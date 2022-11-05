@@ -68,7 +68,8 @@ int main(int argc, const char * argv[]) {
                 break;
                 
             case MENU_PATIENT:
-                
+                scanf("put the patient's number:",&pindex);
+                ifctdb_getData;
                 break;
                 
             case MENU_PLACE:

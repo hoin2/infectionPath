@@ -45,12 +45,15 @@ int main(int argc, const char * argv[]) {
     
     #if 0
     //1-2. loading each patient informations
-    fp=fopen();
+    FILE=*fp;
+    fp=fopen("patientInfo_sample","r");
     
-	while(3==fscanf("3가지 읽기",변수들))
+	while(fscanf(fp,"\0")==3)
 	{
-    	for(5번 반)
-			fscanf(5개 읽기);	
+		int i;
+    	for(i=0;i<5;i++){
+			fscanf();	
+		}
 	}
 	fclose(fp);
 	

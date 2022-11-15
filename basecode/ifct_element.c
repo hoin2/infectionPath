@@ -97,3 +97,8 @@ char countryName[N_PLACE+1][MAX_PLACENAME] =
     "CapeTown",
     "Unrecognized"
 };
+
+char* ifctele_getPlaceName(int placeIndex){
+	
+	return countryName[placeIndex];
+}

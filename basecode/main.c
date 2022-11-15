@@ -43,10 +43,30 @@ int main(int argc, const char * argv[]) {
         return -1;
     }
     
+    #if 0
     //1-2. loading each patient informations
+    fp=fopen();
     
+	while(3==fscanf("3가지 읽기",변수들))
+	{
+    	for(5번 반)
+			fscanf(5개 읽기);	
+	}
+	fclose(fp);
+	
+	#endif
     //1-3. FILE pointer close
     fclose(fp);
+    
+    {
+    	int place1,place2;
+    	
+		place1=3;
+    	place2=15;
+    	
+    	printf("The first place is %i\n",ifctele_getPlaceName(place1));
+    	printf("The second place is %i\n",ifctele_getPlaceName(place2));
+	}
     
     do {
         printf("\n=============== INFECTION PATH MANAGEMENT PROGRAM (No. of patients : %i) =============\n", ifctdb_len());
@@ -68,7 +88,7 @@ int main(int argc, const char * argv[]) {
                 break;
                 
             case MENU_PATIENT:
-                scanf("put the patient's number:",&pindex);
+                scanf("put the patient's number:",&pIndex);
                 ifctdb_getData;
                 break;
                 

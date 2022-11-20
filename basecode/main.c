@@ -45,17 +45,17 @@ int main(int argc, const char * argv[]) {
     
     #if 0
     //1-2. loading each patient informations
-    FILE=*fp;
-    fp=fopen("patientInfo_sample","r");
+    FILE*fp;
+    fp=fopen("patientInfo_sample.txt","r");
+    int i;
     
-	while(fscanf(fp,"\0")==3)
-	{
-		int i;
-    	for(i=0;i<5;i++){
-			fscanf();	
-		}
+    while(fscanf(fp,"%d %d %d",&pIndex,&age,&time)==3){
+    	for(i=0;i<5;i++)
+    		fscanf(fp,"%d",&placeHist[i]);
+    	break;
 	}
 	fclose(fp);
+	
 	
 	#endif
     //1-3. FILE pointer close

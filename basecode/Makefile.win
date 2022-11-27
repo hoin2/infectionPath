@@ -1,17 +1,17 @@
 # Project: Project1
 # Makefile created by Dev-C++ 5.11
 
-CPP      = g++.exe
-CC       = gcc.exe
+CPP      = g++.exe -D__DEBUG__
+CC       = gcc.exe -D__DEBUG__
 WINDRES  = windres.exe
-OBJ      = basecode/ifct_database.o basecode/ifct_element.o basecode/main.o
-LINKOBJ  = basecode/ifct_database.o basecode/ifct_element.o basecode/main.o
-LIBS     = -L"C:/Users/tjdgh/OneDrive/πŸ≈¡ »≠∏È/Dev-Cpp/MinGW64/lib" -L"C:/Users/tjdgh/OneDrive/πŸ≈¡ »≠∏È/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib" -static-libgcc
+OBJ      = ifct_database.o ifct_element.o main.o
+LINKOBJ  = ifct_database.o ifct_element.o main.o
+LIBS     = -L"C:/Users/tjdgh/OneDrive/πŸ≈¡ »≠∏È/Dev-Cpp/MinGW64/lib" -L"C:/Users/tjdgh/OneDrive/πŸ≈¡ »≠∏È/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib" -static-libgcc -g3
 INCS     = -I"C:/Users/tjdgh/OneDrive/πŸ≈¡ »≠∏È/Dev-Cpp/MinGW64/include" -I"C:/Users/tjdgh/OneDrive/πŸ≈¡ »≠∏È/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"C:/Users/tjdgh/OneDrive/πŸ≈¡ »≠∏È/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include"
 CXXINCS  = -I"C:/Users/tjdgh/OneDrive/πŸ≈¡ »≠∏È/Dev-Cpp/MinGW64/include" -I"C:/Users/tjdgh/OneDrive/πŸ≈¡ »≠∏È/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"C:/Users/tjdgh/OneDrive/πŸ≈¡ »≠∏È/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"C:/Users/tjdgh/OneDrive/πŸ≈¡ »≠∏È/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include/c++"
 BIN      = Project1.exe
-CXXFLAGS = $(CXXINCS) 
-CFLAGS   = $(INCS) 
+CXXFLAGS = $(CXXINCS) -g3 -std=c99
+CFLAGS   = $(INCS) -g3 -std=c99
 RM       = rm.exe -f
 
 .PHONY: all all-before all-after clean clean-custom
@@ -24,11 +24,11 @@ clean: clean-custom
 $(BIN): $(OBJ)
 	$(CC) $(LINKOBJ) -o $(BIN) $(LIBS)
 
-basecode/ifct_database.o: basecode/ifct_database.c
-	$(CC) -c basecode/ifct_database.c -o basecode/ifct_database.o $(CFLAGS)
+ifct_database.o: ifct_database.c
+	$(CC) -c ifct_database.c -o ifct_database.o $(CFLAGS)
 
-basecode/ifct_element.o: basecode/ifct_element.c
-	$(CC) -c basecode/ifct_element.c -o basecode/ifct_element.o $(CFLAGS)
+ifct_element.o: ifct_element.c
+	$(CC) -c ifct_element.c -o ifct_element.o $(CFLAGS)
 
-basecode/main.o: basecode/main.c
-	$(CC) -c basecode/main.c -o basecode/main.o $(CFLAGS)
+main.o: main.c
+	$(CC) -c main.c -o main.o $(CFLAGS)

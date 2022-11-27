@@ -11,6 +11,17 @@
 
 #include "ifct_element.h"
 
+//ifct_ele_t 구조체 
+typedef struct ifct_ele_t
+{
+	int pIndex;
+	int age;
+	unsigned int time;
+	int placeHist[N_HISTORY];
+} patient;
+
+patient patients[5];
+
 typedef enum place {
     Seoul,          //0
     Jeju,           //1
@@ -98,7 +109,49 @@ char countryName[N_PLACE+1][MAX_PLACENAME] =
     "Unrecognized"
 };
 
-char* ifctele_getPlaceName(int placeIndex){
-	
+void* ifctele_genElement(int index, int age, unsigned int detected_time, int history_place[N_HISTORY])
+{
+	patients[index].pIndex = index;
+	patients[index].age = age;
+	patients[index].time = detected_time;
+	for(int i=0; i<5; i++)
+		patients[index].placeHist[i] = history_place[i];
+		
+	return &patients[index];
+}
+
+char* ifctele_getPlaceName(int placeIndex){	
 	return countryName[placeIndex];
 }
+
+int ifctele_getHistPlaceIndex(void* obj, int index)
+{
+	return ((patient *)obj)->placeHist[index];
+}
+
+unsigned int ifctele_getinfestedTime(void* obj)
+{
+	return ((patient *)obj)->time;
+}
+
+int ifctele_getAge(void* obj)
+{
+	return ((patient *)obj)->age;
+}
+
+void ifctele_printElement(void* obj)
+{
+	printf("%i번째 환자 번호:%i\n",(((patient *)obj)->pIndex),((patient *)obj)->pIndex);
+	printf("%i번째 환자 나이:%i\n",(((patient *)obj)->pIndex),((patient *)obj)->age);
+	printf("%i번째 환자 감염 확인일자:%i\n",(((patient *)obj)->pIndex), ((patient *)obj)->time);
+	printf("%i번째 환자 이동경로: ",(((patient *)obj)->pIndex));
+	for(int i=0; i<5; i++)
+		printf("%s ", ifctele_getPlaceName(ifctele_getHistPlaceIndex(obj,i)));
+	printf("\n");
+}
+
+void enum_printf()
+{
+	printf("%d", Jeju);
+}
+

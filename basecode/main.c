@@ -26,7 +26,9 @@ int main(int argc, const char * argv[]) {
     int menu_selection;
     void *ifct_element;
     FILE* fp;
+    int pIndex, age, time;
     int placeHist[N_HISTORY];
+    char place[100];
     
     //------------- 1. loading patient info file ------------------------------
     //1-1. FILE pointer open
@@ -44,17 +46,13 @@ int main(int argc, const char * argv[]) {
     }
 
     //1-2. loading each patient informations
-    int j=0;
-    int pIndex, age, time;
-    int history_place[N_HISTORY];
-    
     while(fscanf(fp,"%d %d %d", &pIndex, &age, &time) == 3)
     {
     	for(int i=0; i<5; i++)
     	{
-    		fscanf(fp," %d", &history_place[i]);
+    		fscanf(fp," %d", &placeHist[i]);
 		}
-		ifctdb_addTail(ifctele_genElement(pIndex, age, time, history_place));
+		ifctdb_addTail(ifctele_genElement(pIndex, age, time, placeHist));
 	}
 		
     //1-3. FILE pointer close
@@ -82,26 +80,45 @@ int main(int argc, const char * argv[]) {
                 break;
                 
             case MENU_PATIENT:
-                printf("put the patient's number:");
+                printf("Patient index: ");
   				scanf("%d",&pIndex);
 				
 				ifctele_printElement(ifctdb_getData(pIndex));
 				break;
                 
             case MENU_PLACE:
-                enum_printf();
+            	printf("Place Name: ");
+            	scanf("%s",place);
+            
+            	for(int i=0;i<N_PLACE;i++)
+				{
+					if(strcmp(place,ifctele_getPlaceName(i))==0)
+					{
+						ifctele_printElement(ifctdb_getData(i));
+					}
+//					if(ifct_element == ifctele_getHistPlaceIndex(ifctdb_getData(i),N_HISTORY-1))
+//			    		ifctele_printElement(ifctdb_getData(i));
+				}
+				printf("\n");
+
+				
+//				if(*(int*)ifct_element != ifctele_getHistPlaceIndex(obj,N_HISTORY-1))
+//            			printf("There are 0 patients detected in %s",&place);
+            	
                 break;
                 
             case MENU_AGE:
-                printf("범위를 지정하시오(최솟값, 최댓값 순으로): ");
-            	scanf("%d %d",&Min_age,&Max_age);
+                printf("minimal age : ");
+                scanf("%d",&Min_age);
+                printf("maximal age : ");
+            	scanf("%d",&Max_age);
            
 		   		for(int i=0;i<N_HISTORY;i++)
 				{
 					if(Min_age<=ifctele_getAge(ifctdb_getData(i))&&Max_age>=ifctele_getAge(ifctdb_getData(i)))
 						ifctele_printElement(ifctdb_getData(i));
             	}	
-;  
+            	
                 break;
                 
             case MENU_TRACK:

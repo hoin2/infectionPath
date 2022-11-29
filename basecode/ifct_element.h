@@ -22,3 +22,4 @@ int ifctele_getAge(void* obj);
 //main(obj)->print
 void ifctele_printElement(void* obj);
 #endif /* ifct_element_h */
+

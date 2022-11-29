@@ -141,17 +141,18 @@ int ifctele_getAge(void* obj)
 
 void ifctele_printElement(void* obj)
 {
-	printf("%i번째 환자 번호:%i\n",(((patient *)obj)->pIndex),((patient *)obj)->pIndex);
-	printf("%i번째 환자 나이:%i\n",(((patient *)obj)->pIndex),((patient *)obj)->age);
-	printf("%i번째 환자 감염 확인일자:%i\n",(((patient *)obj)->pIndex), ((patient *)obj)->time);
-	printf("%i번째 환자 이동경로: ",(((patient *)obj)->pIndex));
+	printf("-------------------------------------------------------------------------------\n");
+	printf("Patient index : %i\n",((patient *)obj)->pIndex);
+	printf("Patient age : %i\n",((patient *)obj)->age);
+	printf("Detected time : %i\n",((patient *)obj)->time);
+	printf("Path History : ");
 	for(int i=0; i<5; i++)
-		printf("%s ", ifctele_getPlaceName(ifctele_getHistPlaceIndex(obj,i)));
-	printf("\n");
-}
-
-void enum_printf()
-{
-	printf("%d", Jeju);
+	{
+		printf("%s(%i)", ifctele_getPlaceName(ifctele_getHistPlaceIndex(obj,i)),((patient *)obj)->placeHist[i]);
+		if(i>=0&&i<4)
+			printf("-> ");
+	}
+	printf("\n");	
+	printf("-------------------------------------------------------------------------------\n");
 }
 

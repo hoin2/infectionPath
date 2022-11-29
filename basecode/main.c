@@ -29,6 +29,7 @@ int main(int argc, const char * argv[]) {
     int pIndex, age, time;
     int placeHist[N_HISTORY];
     char place[100];
+    int Min_age, Max_age;
     
     //------------- 1. loading patient info file ------------------------------
     //1-1. FILE pointer open
@@ -54,6 +55,8 @@ int main(int argc, const char * argv[]) {
 		}
 		ifctdb_addTail(ifctele_genElement(pIndex, age, time, placeHist));
 	}
+	
+	int p_num = ifctdb_len();
 		
     //1-3. FILE pointer close
 	fclose(fp);
@@ -72,35 +75,44 @@ int main(int argc, const char * argv[]) {
         fflush(stdin);
         
         switch(menu_selection)
-        {
-			int Min_age, Max_age;
-        	
+        {	
             case MENU_EXIT:
                 printf("Exiting the program... Bye bye.\n");
                 break;
                 
             case MENU_PATIENT:
-                printf("Patient index: ");
+                printf("Patient index : ");
   				scanf("%d",&pIndex);
-				
-				ifctele_printElement(ifctdb_getData(pIndex));
+					
+				if(pIndex<0||pIndex>ifctdb_len())
+					printf("[ERROR] Your input for the patient index (%d) is wrong! input must be 0 ~4\n",pIndex);
+					
+				else
+					ifctele_printElement(ifctdb_getData(pIndex));
 				break;
                 
             case MENU_PLACE:
-            	printf("Place Name: ");
+            	printf("Place Name : ");
             	scanf("%s",place);
-            
-            	for(int i=0;i<5;i++)
+            	
+				int p_num = ifctdb_len();
+				
+				for(int i=0;i<ifctdb_len();i++)
 				{
-					if(strcmp(place,ifctele_getPlaceName(ifctele_getHistPlaceIndex(ifctdb_getData(i),4)))==0)
+					if(strcmp(place,ifctele_getPlaceName(ifctele_getHistPlaceIndex(ifctdb_getData(i),N_HISTORY-1)))==0)
 						ifctele_printElement(ifctdb_getData(i));
+						
+					else
+						p_num--;
+				}	
+				
+				if(p_num == 0)
+				{
+					printf("\n");
+					printf("There are 0 patients detected in %s",place);
 				}
 				printf("\n");
 
-				
-//				if(*(int*)ifct_element != ifctele_getHistPlaceIndex(obj,N_HISTORY-1))
-//            			printf("There are 0 patients detected in %s",&place);
-            	
                 break;
                 
             case MENU_AGE:
@@ -108,21 +120,45 @@ int main(int argc, const char * argv[]) {
                 scanf("%d",&Min_age);
                 printf("maximal age : ");
             	scanf("%d",&Max_age);
-           
-		   		for(int i=0;i<N_HISTORY;i++)
+            	
+           		int a_num = ifctdb_len();
+           		
+		   		for(int i=0;i<ifctdb_len();i++)
 				{
 					if(Min_age<=ifctele_getAge(ifctdb_getData(i))&&Max_age>=ifctele_getAge(ifctdb_getData(i)))
-						ifctele_printElement(ifctdb_getData(i));
-            	}	
-            	
-                break;
+						ifctele_printElement(ifctdb_getData(i));      	
+						
+					else
+						a_num--;
+				}	
+    			
+				if(a_num == 0)
+				{
+					printf("\n");
+					printf("There are 0 patients whose age is beteween %d and %d.\n",Min_age,Max_age); 
+				}
+                
+				break;
                 
             case MENU_TRACK:
-                    
+                printf("Patient index : ");
+                scanf("%d",&pIndex);
+                
+                if(pIndex<0||pIndex>ifctdb_len())
+					printf("[ERROR] Your input for the patient index (%d) is wrong! input must be 0 ~4\n",pIndex);
+                
+            	else
+//                int arr1[] = ifctele_getinfestedTime(ifctdb_getData(pIndex));
+//                int arr2[] = ifctele_getHistPlaceIndex(ifctdb_getData(pIndex), N_HISTORY-1);
+//                int track_P_num = trackInfester(pIndex,arr1,arr2);
+                
+//                printf("The first infector of %d is %d",pIndex,track_P_num);
+                
                 break;
                 
+                
             default:
-                printf("[ERROR Wrong menu selection! (%i), please choose between 0 ~ 4\n", menu_selection);
+                printf("[ERROR] Wrong menu selection! (%i), please choose between 0 ~ 4\n", menu_selection);
                 break;
         }
     
@@ -131,7 +167,16 @@ int main(int argc, const char * argv[]) {
     return 0;
 }
 
-int trackInfester(int patient_no, int *detected_time, int *place)
-{
-	
-}
+//
+//int trackInfester(int patient_no, int *detected_time, int *place)
+//{	
+//	int p_num = ifctdb_len();
+//	
+//	do{
+//		
+//			
+//	}while(patient_no);
+//	
+//	return ;
+//}
+

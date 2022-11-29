@@ -90,14 +90,10 @@ int main(int argc, const char * argv[]) {
             	printf("Place Name: ");
             	scanf("%s",place);
             
-            	for(int i=0;i<N_PLACE;i++)
+            	for(int i=0;i<5;i++)
 				{
-					if(strcmp(place,ifctele_getPlaceName(i))==0)
-					{
+					if(strcmp(place,ifctele_getPlaceName(ifctele_getHistPlaceIndex(ifctdb_getData(i),4)))==0)
 						ifctele_printElement(ifctdb_getData(i));
-					}
-//					if(ifct_element == ifctele_getHistPlaceIndex(ifctdb_getData(i),N_HISTORY-1))
-//			    		ifctele_printElement(ifctdb_getData(i));
 				}
 				printf("\n");
 

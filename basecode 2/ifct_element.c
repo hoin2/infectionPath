@@ -12,13 +12,13 @@
 #include "ifct_element.h"
 
 //ifct_ele_t ±¸Á¶Ã¼ 
-typedef struct ifs_ele
+typedef struct ifct_ele_t
 {
 	int pIndex;
 	int age;
 	unsigned int time;
 	int placeHist[N_HISTORY];
-} ifct_ele_t;
+} patient;
 
 typedef enum place {
     Seoul,          //0
@@ -110,16 +110,16 @@ char countryName[N_PLACE+1][MAX_PLACENAME] =
 void* ifctele_genElement(int index, int age, unsigned int detected_time, int history_place[N_HISTORY])
 {
 	int p_num=5;
-	ifct_ele_t *ifct_element;
-	ifct_element=(ifct_ele_t *)malloc(sizeof(ifct_ele_t)*p_num);
+	patient *patients;
+	patients=(patient *)malloc(sizeof(patient)*p_num);
 	
-	ifct_element[index].pIndex = index;
-	ifct_element[index].age = age;
-	ifct_element[index].time = detected_time;
+	patients[index].pIndex = index;
+	patients[index].age = age;
+	patients[index].time = detected_time;
 	for(int i=0; i<5; i++)
-		ifct_element[index].placeHist[i] = history_place[i];
+		patients[index].placeHist[i] = history_place[i];
 		
-	return &ifct_element[index];
+	return &patients[index];
 }
 
 char* ifctele_getPlaceName(int placeIndex){	
@@ -128,29 +128,29 @@ char* ifctele_getPlaceName(int placeIndex){
 
 int ifctele_getHistPlaceIndex(void* obj, int index)
 {
-	return ((ifct_ele_t *)obj)->placeHist[index];
+	return ((patient *)obj)->placeHist[index];
 }
 
 unsigned int ifctele_getinfestedTime(void* obj)
 {
-	return ((ifct_ele_t *)obj)->time;
+	return ((patient *)obj)->time;
 }
 
 int ifctele_getAge(void* obj)
 {
-	return ((ifct_ele_t *)obj)->age;
+	return ((patient *)obj)->age;
 }
 
 void ifctele_printElement(void* obj)
 {
 	printf("-------------------------------------------------------------------------------\n");
-	printf("Patient index : %i\n",((ifct_ele_t *)obj)->pIndex);
-	printf("Patient age : %i\n",((ifct_ele_t *)obj)->age);
-	printf("Detected time : %i\n",((ifct_ele_t *)obj)->time);
+	printf("Patient index : %i\n",((patient *)obj)->pIndex);
+	printf("Patient age : %i\n",((patient *)obj)->age);
+	printf("Detected time : %i\n",((patient *)obj)->time);
 	printf("Path History : ");
 	for(int i=0; i<5; i++)
 	{
-		printf("%s(%i)", ifctele_getPlaceName(ifctele_getHistPlaceIndex(obj,i)),((ifct_ele_t *)obj)->placeHist[i]);
+		printf("%s(%i)", ifctele_getPlaceName(ifctele_getHistPlaceIndex(obj,i)),((patient *)obj)->placeHist[i]);
 		if(i>=0&&i<4)
 			printf("-> ");
 	}

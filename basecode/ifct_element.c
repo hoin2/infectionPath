@@ -11,15 +11,6 @@
 
 #include "ifct_element.h"
 
-//ifct_ele_t 구조체 
-typedef struct ifs_ele
-{
-	int pIndex;
-	int age;
-	unsigned int time;
-	int placeHist[N_HISTORY];
-} ifct_ele_t;
-
 typedef enum place {
     Seoul,          //0
     Jeju,           //1
@@ -107,9 +98,18 @@ char countryName[N_PLACE+1][MAX_PLACENAME] =
     "Unrecognized"
 };
 
+//ifct_ele_t 구조체 
+typedef struct ifs_ele
+{
+	int pIndex;
+	int age;
+	unsigned int time;
+	int placeHist[N_HISTORY];
+} ifct_ele_t;
+
 void* ifctele_genElement(int index, int age, unsigned int detected_time, int history_place[N_HISTORY])
 {
-	int p_num=5;
+	int p_num = 5;
 	ifct_ele_t *ifct_element;
 	ifct_element=(ifct_ele_t *)malloc(sizeof(ifct_ele_t)*p_num);
 	
@@ -128,29 +128,37 @@ char* ifctele_getPlaceName(int placeIndex){
 
 int ifctele_getHistPlaceIndex(void* obj, int index)
 {
-	return ((ifct_ele_t *)obj)->placeHist[index];
+	ifct_ele_t *strPtr=(ifct_ele_t *)obj;
+	
+	return strPtr->placeHist[index];
 }
 
 unsigned int ifctele_getinfestedTime(void* obj)
 {
-	return ((ifct_ele_t *)obj)->time;
+	ifct_ele_t *strPtr=(ifct_ele_t *)obj;
+	
+	return strPtr->time;
 }
 
 int ifctele_getAge(void* obj)
 {
-	return ((ifct_ele_t *)obj)->age;
+	ifct_ele_t *strPtr=(ifct_ele_t *)obj;
+	
+	return strPtr->age;
 }
 
 void ifctele_printElement(void* obj)
 {
+	ifct_ele_t *strPtr=(ifct_ele_t *)obj;
+	
 	printf("-------------------------------------------------------------------------------\n");
-	printf("Patient index : %i\n",((ifct_ele_t *)obj)->pIndex);
-	printf("Patient age : %i\n",((ifct_ele_t *)obj)->age);
-	printf("Detected time : %i\n",((ifct_ele_t *)obj)->time);
+	printf("Patient index : %i\n",strPtr->pIndex);
+	printf("Patient age : %i\n",strPtr->age);
+	printf("Detected time : %i\n",strPtr->time);
 	printf("Path History : ");
 	for(int i=0; i<5; i++)
 	{
-		printf("%s(%i)", ifctele_getPlaceName(ifctele_getHistPlaceIndex(obj,i)),((ifct_ele_t *)obj)->placeHist[i]);
+		printf("%s(%i)", ifctele_getPlaceName(ifctele_getHistPlaceIndex(obj,i)),strPtr->placeHist[i]);
 		if(i>=0&&i<4)
 			printf("-> ");
 	}

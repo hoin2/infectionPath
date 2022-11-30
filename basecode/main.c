@@ -30,6 +30,8 @@ int main(int argc, const char * argv[]) {
     int placeHist[N_HISTORY];
     char place[100];
     int Min_age, Max_age;
+    int arr1[20];
+    int arr2[50];
     
     //------------- 1. loading patient info file ------------------------------
     //1-1. FILE pointer open
@@ -53,11 +55,11 @@ int main(int argc, const char * argv[]) {
     	{
     		fscanf(fp," %d", &placeHist[i]);
 		}
-		ifctdb_addTail(ifctele_genElement(pIndex, age, time, placeHist));
-	}
-	
-	int p_num = ifctdb_len();
+		ifct_element=ifctele_genElement(pIndex, age, time, placeHist);
 		
+		ifctdb_addTail(ifct_element);
+	}
+
     //1-3. FILE pointer close
 	fclose(fp);
     
@@ -144,15 +146,24 @@ int main(int argc, const char * argv[]) {
                 printf("Patient index : ");
                 scanf("%d",&pIndex);
                 
-                if(pIndex<0||pIndex>ifctdb_len())
+        		for(int i=0;i<ifctdb_len();i++)
+				{
+                	for(int j=0;j<N_HISTORY;j++)
+                	{
+	                	arr2[i*N_HISTORY+j] = ifctele_getHistPlaceIndex(ifctdb_getData(i),j);
+
+					}  
+				}
+				for(int i=0;i<ifctdb_len();i++)
+				{
+  					arr1[i]= ifctele_getinfestedTime(ifctdb_getData(i));
+				}
+				
+                if(pIndex<0||pIndex>=ifctdb_len())
 					printf("[ERROR] Your input for the patient index (%d) is wrong! input must be 0 ~4\n",pIndex);
-                
+					
             	else
-//                int arr1[] = ifctele_getinfestedTime(ifctdb_getData(pIndex));
-//                int arr2[] = ifctele_getHistPlaceIndex(ifctdb_getData(pIndex), N_HISTORY-1);
-//                int track_P_num = trackInfester(pIndex,arr1,arr2);
-                
-//                printf("The first infector of %d is %d",pIndex,track_P_num);
+               		printf("The first infector of %i is %i\n",pIndex,trackInfester(pIndex, arr1, arr2));
                 
                 break;
                 
@@ -167,16 +178,44 @@ int main(int argc, const char * argv[]) {
     return 0;
 }
 
-//
-//int trackInfester(int patient_no, int *detected_time, int *place)
-//{	
-//	int p_num = ifctdb_len();
-//	
-//	do{
-//		
-//			
-//	}while(patient_no);
-//	
-//	return ;
-//}
+int trackInfester(int patient_no, int *detected_time, int *place)
+{	
+	int row=0;
+	int col=0;
+	
+	for(int i=0;i<5;i++)
+	{
+		if(patient_no == i)
+			continue;
+		else
+		{
+			for(int j=0;j<3;j++)
+			{
+				if(detected_time[patient_no]-(4-j) == detected_time[i])
+				{
+					col = i;
+					row = j;
+					
+					if(place[patient_no*N_HISTORY+row] == place[col*N_HISTORY+4])
+					{
+						printf("-->[Tracking] patient %i is infected by %i (time : %i, place : %s)\n",patient_no,i,detected_time[i],ifctele_getPlaceName(place[col*N_HISTORY+4]));
+						return i;
+					}
+				}
+				else if(detected_time[patient_no]-(4-j) == detected_time[i]-1)
+				{
+					col = i;
+					row = j;
+					if(place[patient_no*N_HISTORY+row] == place[col*N_HISTORY+3])
+					{
+						printf("-->[Tracking] patient %i is infected by %i (time : %i, place : %s)\n",patient_no,i,detected_time[i]-1,ifctele_getPlaceName(place[col*N_HISTORY+3]));
+						return i;
+					}
+				}
+			}
+		}
+		
+	}
+
+}
 

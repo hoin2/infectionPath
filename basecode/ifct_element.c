@@ -113,13 +113,21 @@ void* ifctele_genElement(int index, int age, unsigned int detected_time, int his
 	ifct_ele_t *ifct_element;
 	ifct_element=(ifct_ele_t *)malloc(sizeof(ifct_ele_t)*p_num);
 	
+	if(ifct_element == NULL)
+	{
+		printf("error\n");
+		return 1;
+	}
+	
 	ifct_element[index].pIndex = index;
 	ifct_element[index].age = age;
 	ifct_element[index].time = detected_time;
 	for(int i=0; i<5; i++)
 		ifct_element[index].placeHist[i] = history_place[i];
-		
+	
 	return &ifct_element[index];
+	
+	free(ifct_element);
 }
 
 char* ifctele_getPlaceName(int placeIndex){	

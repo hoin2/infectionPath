@@ -107,6 +107,7 @@ typedef struct ifs_ele
 	int placeHist[N_HISTORY];
 } ifct_ele_t;
 
+//mian.c patient information 구조체 저 장  
 void* ifctele_genElement(int index, int age, unsigned int detected_time, int history_place[N_HISTORY])
 {
 	int p_num = 5;

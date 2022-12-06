@@ -202,7 +202,7 @@ int trackInfester(int patient_no, int *detected_time, int *place)
 				{
 					col = i;
 					row = j;
-					if(place[patient_no*N_HISTORY+row] == place[col*N_HISTORY+4])
+					if(place[patient_no*N_HISTORY+j] == place[i*N_HISTORY+4])
 					{
 						printf("-->[Tracking] patient %i is infected by %i (time : %i, place : %s)\n",patient_no,i,detected_time[patient_no]-(N_HISTORY-1-j),ifctele_getPlaceName(place[patient_no*N_HISTORY+row]));				
 					}
@@ -213,7 +213,7 @@ int trackInfester(int patient_no, int *detected_time, int *place)
 					row = j;
 					printf("col:%i\n",col);
 					printf("row:%i\n",row);
-					if(place[patient_no*N_HISTORY+row] == place[col*N_HISTORY+3])
+					if(place[patient_no*N_HISTORY+j] == place[i*N_HISTORY+3])
 					{
 						printf("-->[Tracking] patient %i is infected by %i (time : %i, place : %s)\n",patient_no,i,detected_time[patient_no]-(N_HISTORY-1-j),ifctele_getPlaceName(place[patient_no*N_HISTORY+row]));
 					}
@@ -223,8 +223,10 @@ int trackInfester(int patient_no, int *detected_time, int *place)
 			}
 		}
 	}
+	
 	if(num == (ifctdb_len()-1)*(N_HISTORY-2))
 		return patient_no;
+	
 	else if(trackInfester(col,detected_time,place) == patient_no)
 	{
 		return col;

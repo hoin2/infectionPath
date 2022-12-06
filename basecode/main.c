@@ -167,6 +167,7 @@ int main(int argc, const char * argv[]) {
 				
 				else if(pIndex != res)
 				{
+					res = trackInfester(res,arr1,arr2);
 					printf("The first infector of %i is %i\n",pIndex,res);
 				}
 					

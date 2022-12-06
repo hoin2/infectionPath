@@ -1,0 +1,150 @@
+source patient : 0 --------------------
+   -> 0) patient 1 : Cairo (met at 7),	 detected time 9
+   -> 1) patient 2 : Cairo (met at 7),	 detected time 10
+   -> 2) patient 3 : Nice (met at 8),	 detected time 10
+source patient : 1 --------------------
+source patient : 2 --------------------
+   -> 0) patient 4 : Jeju (met at 9),	 detected time 11
+   -> 1) patient 5 : Jeju (met at 9),	 detected time 13
+   -> 2) patient 6 : Jeju (met at 9),	 detected time 11
+   -> 3) patient 7 : Jeju (met at 9),	 detected time 13
+source patient : 3 --------------------
+   -> 0) patient 8 : Amsterdam (met at 9),	 detected time 13
+source patient : 4 --------------------
+source patient : 5 --------------------
+   -> 0) patient 9 : CapeTown (met at 13),	 detected time 17
+source patient : 6 --------------------
+   -> 0) patient 10 : warsow (met at 11),	 detected time 13
+   -> 1) patient 11 : warsow (met at 11),	 detected time 13
+   -> 2) patient 12 : Singapore (met at 10),	 detected time 14
+   -> 3) patient 13 : Singapore (met at 10),	 detected time 14
+source patient : 7 --------------------
+   -> 0) patient 14 : Milan (met at 12),	 detected time 15
+   -> 1) patient 15 : Cairo (met at 13),	 detected time 17
+   -> 2) patient 16 : Milan (met at 12),	 detected time 16
+   -> 3) patient 17 : Milan (met at 12),	 detected time 15
+source patient : 8 --------------------
+source patient : 9 --------------------
+source patient : 10 --------------------
+   -> 0) patient 18 : Munich (met at 13),	 detected time 17
+   -> 1) patient 19 : Munich (met at 13),	 detected time 16
+source patient : 11 --------------------
+   -> 0) patient 20 : London (met at 12),	 detected time 15
+source patient : 12 --------------------
+   -> 0) patient 21 : Manchester (met at 13),	 detected time 17
+source patient : 13 --------------------
+   -> 0) patient 22 : Reykjavik (met at 13),	 detected time 16
+   -> 1) patient 23 : Reykjavik (met at 13),	 detected time 16
+   -> 2) patient 24 : Cairo (met at 14),	 detected time 16
+   -> 3) patient 25 : Reykjavik (met at 13),	 detected time 15
+source patient : 14 --------------------
+   -> 0) patient 26 : Amsterdam (met at 14),	 detected time 17
+   -> 1) patient 27 : Amsterdam (met at 14),	 detected time 16
+   -> 2) patient 28 : Nairobi (met at 15),	 detected time 18
+source patient : 15 --------------------
+source patient : 16 --------------------
+   -> 0) patient 29 : KualaLumpur (met at 15),	 detected time 17
+source patient : 17 --------------------
+   -> 0) patient 30 : Toronto (met at 14),	 detected time 16
+   -> 1) patient 31 : Toronto (met at 14),	 detected time 16
+   -> 2) patient 32 : LosAngeles (met at 15),	 detected time 17
+   -> 3) patient 33 : Toronto (met at 14),	 detected time 17
+source patient : 18 --------------------
+   -> 0) patient 34 : Istanbul (met at 17),	 detected time 19
+source patient : 19 --------------------
+   -> 0) patient 35 : Jeju (met at 16),	 detected time 18
+   -> 1) patient 36 : Toronto (met at 15),	 detected time 18
+source patient : 20 --------------------
+   -> 0) patient 37 : Munich (met at 15),	 detected time 17
+source patient : 21 --------------------
+source patient : 22 --------------------
+   -> 0) patient 38 : BuenosAires (met at 15),	 detected time 19
+   -> 1) patient 39 : BuenosAires (met at 15),	 detected time 17
+   -> 2) patient 40 : London (met at 16),	 detected time 20
+   -> 3) patient 41 : London (met at 16),	 detected time 20
+source patient : 23 --------------------
+source patient : 24 --------------------
+   -> 0) patient 42 : Nice (met at 15),	 detected time 19
+   -> 1) patient 43 : Jeju (met at 16),	 detected time 19
+source patient : 25 --------------------
+   -> 0) patient 44 : Bangkok (met at 14),	 detected time 17
+   -> 1) patient 45 : Bangkok (met at 14),	 detected time 16
+   -> 2) patient 46 : Madrid (met at 15),	 detected time 18
+source patient : 26 --------------------
+   -> 0) patient 47 : Toronto (met at 17),	 detected time 19
+source patient : 27 --------------------
+   -> 0) patient 48 : Glasgow (met at 16),	 detected time 19
+   -> 1) patient 49 : Texas (met at 15),	 detected time 19
+source patient : 28 --------------------
+   -> 0) patient 50 : KualaLumpur (met at 17),	 detected time 19
+   -> 1) patient 51 : KualaLumpur (met at 17),	 detected time 20
+   -> 2) patient 52 : SaoPaulo (met at 18),	 detected time 21
+   -> 3) patient 53 : KualaLumpur (met at 17),	 detected time 19
+source patient : 29 --------------------
+   -> 0) patient 54 : Hanoi (met at 17),	 detected time 21
+   -> 1) patient 55 : Hanoi (met at 17),	 detected time 19
+   -> 2) patient 56 : Hanoi (met at 17),	 detected time 20
+source patient : 30 --------------------
+source patient : 31 --------------------
+   -> 0) patient 57 : NewYork (met at 15),	 detected time 18
+   -> 1) patient 58 : NewYork (met at 15),	 detected time 17
+   -> 2) patient 59 : Luzern (met at 16),	 detected time 18
+source patient : 32 --------------------
+   -> 0) patient 60 : Cairo (met at 16),	 detected time 19
+   -> 1) patient 61 : Cairo (met at 16),	 detected time 19
+source patient : 33 --------------------
+   -> 0) patient 62 : Glasgow (met at 17),	 detected time 20
+   -> 1) patient 63 : CapeTown (met at 16),	 detected time 19
+   -> 2) patient 64 : CapeTown (met at 16),	 detected time 19
+source patient : 34 --------------------
+   -> 0) patient 65 : Oslo (met at 19),	 detected time 23
+   -> 1) patient 66 : Stockholm (met at 18),	 detected time 22
+source patient : 35 --------------------
+   -> 0) patient 67 : Rome (met at 18),	 detected time 21
+   -> 1) patient 68 : Rome (met at 18),	 detected time 20
+source patient : 36 --------------------
+   -> 0) patient 69 : CapeTown (met at 18),	 detected time 22
+   -> 1) patient 70 : Sydney (met at 17),	 detected time 20
+   -> 2) patient 71 : Sydney (met at 17),	 detected time 19
+source patient : 37 --------------------
+   -> 0) patient 72 : LosAngeles (met at 16),	 detected time 20
+   -> 1) patient 73 : Berlin (met at 17),	 detected time 20
+   -> 2) patient 74 : LosAngeles (met at 16),	 detected time 18
+   -> 3) patient 75 : LosAngeles (met at 16),	 detected time 20
+source patient : 38 --------------------
+   -> 0) patient 76 : Cairo (met at 19),	 detected time 21
+   -> 1) patient 77 : Cairo (met at 19),	 detected time 23
+source patient : 39 --------------------
+   -> 0) patient 78 : Madrid (met at 17),	 detected time 19
+   -> 1) patient 79 : Madrid (met at 17),	 detected time 21
+source patient : 40 --------------------
+source patient : 41 --------------------
+   -> 0) patient 80 : Sydney (met at 19),	 detected time 21
+source patient : 42 --------------------
+source patient : 43 --------------------
+   -> 0) patient 81 : Amsterdam (met at 19),	 detected time 21
+   -> 1) patient 82 : Hanoi (met at 18),	 detected time 20
+source patient : 44 --------------------
+   -> 0) patient 83 : Madrid (met at 16),	 detected time 19
+   -> 1) patient 84 : Madrid (met at 16),	 detected time 20
+   -> 2) patient 85 : Cancun (met at 17),	 detected time 20
+   -> 3) patient 86 : Cancun (met at 17),	 detected time 20
+source patient : 45 --------------------
+   -> 0) patient 87 : LosAngeles (met at 16),	 detected time 18
+source patient : 46 --------------------
+   -> 0) patient 88 : Hanoi (met at 17),	 detected time 21
+   -> 1) patient 89 : Stockholm (met at 18),	 detected time 20
+   -> 2) patient 90 : Stockholm (met at 18),	 detected time 20
+   -> 3) patient 91 : Hanoi (met at 17),	 detected time 20
+source patient : 47 --------------------
+   -> 0) patient 92 : Glasgow (met at 19),	 detected time 23
+source patient : 48 --------------------
+   -> 0) patient 93 : Bangkok (met at 18),	 detected time 21
+source patient : 49 --------------------
+   -> 0) patient 94 : London (met at 18),	 detected time 22
+   -> 1) patient 95 : KualaLumpur (met at 19),	 detected time 22
+source patient : 50 --------------------
+   -> 0) patient 96 : Stockholm (met at 18),	 detected time 22
+   -> 1) patient 97 : Stockholm (met at 18),	 detected time 20
+   -> 2) patient 98 : Luzern (met at 19),	 detected time 21
+   -> 3) patient 99 : Stockholm (met at 18),	 detected time 20

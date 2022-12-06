@@ -110,15 +110,8 @@ typedef struct ifs_ele
 //mian.c patient information 구조체 저 장  
 void* ifctele_genElement(int index, int age, unsigned int detected_time, int history_place[N_HISTORY])
 {
-	int p_num = 5;
 	ifct_ele_t *ifct_element;
-	ifct_element=(ifct_ele_t *)malloc(sizeof(ifct_ele_t)*p_num);
-	
-	if(ifct_element == NULL)
-	{
-		printf("error\n");
-		return 1;
-	}
+	ifct_element=(ifct_ele_t *)malloc(sizeof(ifct_ele_t)*30000);
 	
 	ifct_element[index].pIndex = index;
 	ifct_element[index].age = age;

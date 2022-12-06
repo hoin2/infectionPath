@@ -30,9 +30,9 @@ int main(int argc, const char * argv[]) {
     int placeHist[N_HISTORY];
     char place[100];
     int Min_age, Max_age;
-    int arr1[200000];
-    int arr2[300000];
-    int res[ifctdb_len()];
+    int arr1[30000];
+    int arr2[50000];
+    int res,f_res;
     
     //------------- 1. loading patient info file ------------------------------
     //1-1. FILE pointer open
@@ -161,23 +161,19 @@ int main(int argc, const char * argv[]) {
 					}  
 				}
 				
-				res[0] = trackInfester(pIndex,arr1,arr2);
+				res = trackInfester(pIndex,arr1,arr2);
 				
                 if(pIndex<0||pIndex>=ifctdb_len())
 					printf("[ERROR] Your input for the patient index (%d) is wrong! input must be 0 ~4\n",pIndex);
-				
-				else if(pIndex != res[0])
-				{	
-					for(int i=0;i<ifctdb_len();i++)
-					{
-						res[i+1] = trackInfester(res[i],arr1,arr2);
-						
-						if(res[i+1] == res[i])
-						{
-							printf("The first infector of %i is %i\n",pIndex,res[i]);
-							break;						
-						}
-					}
+
+				else if(pIndex != res)
+				{
+					do{
+						f_res = trackInfester(res,arr1,arr2);
+						res = f_res;
+					}while(f_res != res);
+					
+					printf("The first infector of %i is %i\n",pIndex,f_res);
 				}
 					
             	else

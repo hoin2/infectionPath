@@ -110,18 +110,15 @@ typedef struct ifs_ele
 //mian.c patient information 구조체 저 장  
 void* ifctele_genElement(int index, int age, unsigned int detected_time, int history_place[N_HISTORY])
 {
-	ifct_ele_t *ifct_element;
-	ifct_element=(ifct_ele_t *)malloc(sizeof(ifct_ele_t)*30000);
+	ifct_ele_t *ptr;
+	ptr=(ifct_ele_t *)malloc(sizeof(ifct_ele_t)*1);
 	
-	ifct_element[index].pIndex = index;
-	ifct_element[index].age = age;
-	ifct_element[index].time = detected_time;
+	ptr->pIndex = index;
+	ptr->age = age;
+	ptr->time = detected_time;
 	for(int i=0; i<5; i++)
-		ifct_element[index].placeHist[i] = history_place[i];
-	
-	return &ifct_element[index];
-	
-	free(ifct_element);
+		ptr->placeHist[i] = history_place[i];
+	return ptr;
 }
 
 char* ifctele_getPlaceName(int placeIndex){	
@@ -130,37 +127,37 @@ char* ifctele_getPlaceName(int placeIndex){
 
 int ifctele_getHistPlaceIndex(void* obj, int index)
 {
-	ifct_ele_t *strPtr=(ifct_ele_t *)obj;
+	ifct_ele_t *ptr=(ifct_ele_t *)obj;
 	
-	return strPtr->placeHist[index];
+	return ptr->placeHist[index];
 }
 
 unsigned int ifctele_getinfestedTime(void* obj)
 {
-	ifct_ele_t *strPtr=(ifct_ele_t *)obj;
+	ifct_ele_t *ptr=(ifct_ele_t *)obj;
 	
-	return strPtr->time;
+	return ptr->time;
 }
 
 int ifctele_getAge(void* obj)
 {
-	ifct_ele_t *strPtr=(ifct_ele_t *)obj;
+	ifct_ele_t *ptr=(ifct_ele_t *)obj;
 	
-	return strPtr->age;
+	return ptr->age;
 }
 
 void ifctele_printElement(void* obj)
 {
-	ifct_ele_t *strPtr=(ifct_ele_t *)obj;
+	ifct_ele_t *ptr=(ifct_ele_t *)obj;
 	
 	printf("-------------------------------------------------------------------------------\n");
-	printf("Patient index : %i\n",strPtr->pIndex);
-	printf("Patient age : %i\n",strPtr->age);
-	printf("Detected time : %i\n",strPtr->time);
+	printf("Patient index : %i\n",ptr->pIndex);
+	printf("Patient age : %i\n",ptr->age);
+	printf("Detected time : %i\n",ptr->time);
 	printf("Path History : ");
 	for(int i=0; i<5; i++)
 	{
-		printf("%s(%i)", ifctele_getPlaceName(ifctele_getHistPlaceIndex(obj,i)),strPtr->placeHist[i]);
+		printf("%s(%i)", ifctele_getPlaceName(ptr->placeHist[i]),ptr->placeHist[i]);
 		if(i>=0&&i<4)
 			printf("-> ");
 	}

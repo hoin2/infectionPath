@@ -176,40 +176,6 @@ int main(int argc, const char * argv[]) {
 					printf("%i is the first infector!!\n",frs_spr);
 				
 				break;
-
-//				for(int i=0;i<ifctdb_len();i++)
-//				{
-//  					arr1[i]= ifctele_getinfestedTime(ifctdb_getData(i));
-//				}
-//        		
-//				for(int i=0;i<ifctdb_len();i++)
-//				{
-//                	for(int j=0;j<N_HISTORY;j++)
-//                	{
-//	                	arr2[i*N_HISTORY+j] = ifctele_getHistPlaceIndex(ifctdb_getData(i),j);
-//					}  
-//				}
-//				
-//				res = trackInfester(pIndex,arr1,arr2);
-//				
-//                if(pIndex<0||pIndex>=ifctdb_len())
-//					printf("[ERROR] Your input for the patient index (%d) is wrong! input must be 0 ~4\n",pIndex);
-//
-//				else if(pIndex != res)
-//				{
-//					while(f_res != res)
-//					{	
-//						f_res = trackInfester(res,arr1,arr2);
-//						res = f_res;
-//					}
-//					printf("The first infector of %i is %i\n",pIndex,f_res);
-//				}
-//					
-//            	else
-//            	{
-//            		printf("\n");
-//					printf("%i is the first infector!!\n",pIndex);
-//				}
     
             default:
                 printf("[ERROR] Wrong menu selection! (%i), please choose between 0 ~ 4\n", menu_selection);
@@ -236,12 +202,9 @@ int trackInfester(int patient_no)
 			
 			if(meetime > 0)//if meet 
 			{
-//				printf("i:%i\n",i);
 				if(meetime < cnt)
 				{
-//					printf("meetiem : cnt = %i : %i \n",meetime ,cnt);
 					spr = i; 
-//					printf("spr: %i\n",spr);
 					cnt = meetime;
 				}
 			}
@@ -292,47 +255,3 @@ int convertTimeToIndex(int time, int infestedTime)
 	
 	return index;
 }
-
-
-/*
-int trackInfester(int patient_no, int *detected_time, int *place)
-{	
-	int row = 0;
-	int col = 0;
-	int num = 0;
-	for(int i=0;i<ifctdb_len();i++)
-	{
-		if(patient_no == i)
-			continue;
-		else
-		{
-			for(int j=0;j<N_HISTORY-2;j++)
-			{
-				if(detected_time[patient_no]-(N_HISTORY-1-j) == detected_time[i])
-				{
-					if(place[patient_no*N_HISTORY+j] == place[i*N_HISTORY+4])
-					{
-						printf("-->[Tracking] patient %i is infected by %i (time : %i, place : %s)\n",patient_no,i,detected_time[patient_no]-(N_HISTORY-1-j),ifctele_getPlaceName(place[patient_no*N_HISTORY+j]));
-						return i;				
-					}
-				}
-				else if(detected_time[patient_no]-(N_HISTORY-1-j) == detected_time[i]-1)
-				{
-					if(place[patient_no*N_HISTORY+j] == place[i*N_HISTORY+3])
-					{
-						printf("-->[Tracking] patient %i is infected by %i (time : %i, place : %s)\n",patient_no,i,detected_time[patient_no]-(N_HISTORY-1-j),ifctele_getPlaceName(place[patient_no*N_HISTORY+j]));
-						return i;
-					}
-				}
-				else
-					num++;
-			}
-		}
-	}
-	
-	if(num == (ifctdb_len()-1)*(N_HISTORY-2))
-	
-		return patient_no;
-	
-}
-*/

@@ -98,7 +98,7 @@ char countryName[N_PLACE+1][MAX_PLACENAME] =
     "Unrecognized"
 };
 
-//ifct_ele_t 구조체 
+//ifct_ele_t sturcture 
 typedef struct ifs_ele
 {
 	int pIndex;
@@ -107,60 +107,70 @@ typedef struct ifs_ele
 	int placeHist[N_HISTORY];
 } ifct_ele_t;
 
-//mian.c patient information 구조체 저 장  
+//mian.c patient information structure save
 void* ifctele_genElement(int index, int age, unsigned int detected_time, int history_place[N_HISTORY])
 {
 	ifct_ele_t *ptr;
-	ptr=(ifct_ele_t *)malloc(sizeof(ifct_ele_t)*1);
+	ptr = (ifct_ele_t *)malloc(sizeof(ifct_ele_t)*1);
 	
 	ptr->pIndex = index;
 	ptr->age = age;
 	ptr->time = detected_time;
+	
 	for(int i=0; i<5; i++)
 		ptr->placeHist[i] = history_place[i];
+		
 	return ptr;
 }
 
-char* ifctele_getPlaceName(int placeIndex){	
+//return place name 
+char* ifctele_getPlaceName(int placeIndex)
+{	
 	return countryName[placeIndex];
 }
 
+//return place index
 int ifctele_getHistPlaceIndex(void* obj, int index)
 {
-	ifct_ele_t *ptr=(ifct_ele_t *)obj;
+	ifct_ele_t *ptr = (ifct_ele_t *)obj;
 	
 	return ptr->placeHist[index];
 }
 
+//return infested time
 unsigned int ifctele_getinfestedTime(void* obj)
 {
-	ifct_ele_t *ptr=(ifct_ele_t *)obj;
+	ifct_ele_t *ptr = (ifct_ele_t *)obj;
 	
 	return ptr->time;
 }
 
+//return age
 int ifctele_getAge(void* obj)
 {
-	ifct_ele_t *ptr=(ifct_ele_t *)obj;
+	ifct_ele_t *ptr = (ifct_ele_t *)obj;
 	
 	return ptr->age;
 }
 
+//print patient information
 void ifctele_printElement(void* obj)
 {
-	ifct_ele_t *ptr=(ifct_ele_t *)obj;
+	ifct_ele_t *ptr = (ifct_ele_t *)obj;
 	
 	printf("-------------------------------------------------------------------------------\n");
 	printf("Patient index : %i\n",ptr->pIndex);
 	printf("Patient age : %i\n",ptr->age);
 	printf("Detected time : %i\n",ptr->time);
 	printf("Path History : ");
+	
 	for(int i=0; i<5; i++)
 	{
 		printf("%s(%i)", ifctele_getPlaceName(ptr->placeHist[i]),ptr->placeHist[i]);
 		if(i>=0&&i<4)
 			printf("-> ");
 	}
+	
 	printf("\n");	
 	printf("-------------------------------------------------------------------------------\n");
 }

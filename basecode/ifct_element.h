@@ -12,14 +12,12 @@
 #define N_HISTORY                   5
 #define MAX_PLACENAME               100
 
-// main->ifctele_genElement() 
+// main -> ifctele_genElement() 
 void* ifctele_genElement(int index, int age, unsigned int detected_time, int history_place[N_HISTORY]);
-char* ifctele_getPlaceName(int placeIndex);
-// (0,3) -> seoul(0)
-int ifctele_getHistPlaceIndex(void* obj, int index);
-unsigned int ifctele_getinfestedTime(void* obj);
-int ifctele_getAge(void* obj);
-//main(obj)->print
-void ifctele_printElement(void* obj);
-#endif /* ifct_element_h */
+char* ifctele_getPlaceName(int placeIndex);					//place index -> place name
+int ifctele_getHistPlaceIndex(void* obj, int index);		//(0,3) -> patient index is 0, place history's 4th place index
+unsigned int ifctele_getinfestedTime(void* obj);			//get infested time
+int ifctele_getAge(void* obj);								//get age
+void ifctele_printElement(void* obj);						//main(obj)->print
 
+#endif /* ifct_element_h */

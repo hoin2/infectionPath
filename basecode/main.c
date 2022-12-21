@@ -215,7 +215,7 @@ int trackInfester(int patient_no)
 			//if present meetime is earler than previous meetime
 			if(meetime < p_meetime)
 			{
-				spr = i; 				//spreader is i(patient index)
+				spr = i; 	//spreader is i(patient index)
 				p_meetime = meetime; 	//turn previous meetime value into meetime
 			}
 		}
